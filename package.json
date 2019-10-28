@@ -1,0 +1,23 @@
+{
+  "name": "simplec",
+  "version": "1.0.0",
+  "description": "cesium一些方法的封装",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diken666/simpleC.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diken666/simpleC/issues"
+  },
+  "homepage": "https://github.com/diken666/simpleC#readme",
+  "devDependencies": {
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9"
+  }
+}
