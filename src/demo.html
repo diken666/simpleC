@@ -29,10 +29,10 @@
             <button id="addPoint">画点</button>
             <button id="addLine">画线</button>
             <button id="addArea">画面</button>
+            <button id="viewDis">透视分析</button>
+            <button id="viewArea">视野分析</button>
         </div>
     </div>
-<!--    <script src="../build/simpleC.min.js"></script>-->
-    <script src="./index.js"></script>
     <script>
         const viewer = new Cesium.Viewer("cesiumContainer", {
             animation: false, // 是否创建动画小器件
@@ -76,10 +76,26 @@
             show: true
         }));
 
-        let simpleC = new SimpleC(viewer);
-        let pointArr = []
+        // 加载倾斜模型数据
+        viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
+            // url: '/tileset/tileset.json',
+            url: 'http://popcity.popsmart.cn:9001/data/lishui/fs_b3dm/tileset.json',
+            maximumScreenSpaceError: 2,       // 最大的屏幕空间误差
+            maximumNumberOfLoadedTiles: 10000,  // 最大加载瓦片个数
+            // modelMatrix: m
+        }));
+
+        viewer.camera.flyTo({
+            destination : Cesium.Cartesian3.fromDegrees(121.34338888888888, 29.259416666666668, 600.0),
+            orientation: {
+                pitch : Cesium.Math.toRadians(-40.0),
+            }
+        });
+
 
     </script>
+    <script src="SimpleC.js"></script>
+    <script src="index.js"></script>
     <script src="btnBind.js"></script>
 </body>
 </html>

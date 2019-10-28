@@ -1,4 +1,7 @@
 
+// let position = simpleC.viewer.scene.camera.pickEllipsoid(e.position, simpleC.viewer.scene.globe.ellipsoid);
+// let position = simpleC.viewer.scene.pickPosition(e.position);
+
 class SimpleC {
 
     constructor(viewer) {
@@ -135,7 +138,7 @@ class SimpleC {
     }
 
     // 计算多边形面积
-    // 参数{ 经纬度， 世界坐标 }
+    // 参数{ 世界坐标 }
     getArea(positionArr) {
         let res = 0;
         //拆分三角曲面
@@ -192,5 +195,12 @@ class SimpleC {
         let lng = Cesium.Math.toDegrees(cartographic.longitude);
         let height = cartographic.height;
         return { lng, lat, height }
+    }
+
+    // 经纬度转世界坐标
+    lngAndLatToWorldPos( position ) {
+        let ellipsoid = this.viewer.scene.globe.ellipsoid;
+        let cartographic = Cesium.Cartographic.fromDegrees(position.lng, position.lat, position.height);
+        return ellipsoid.cartographicToCartesian(cartographic);
     }
 }

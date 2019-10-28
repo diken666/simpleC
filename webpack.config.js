@@ -2,7 +2,7 @@ const path = require('path');
 module.exports = {
     entry: './src/index.js',    //入口
     output: {       //出口
-        filename: "simpleC.min.js",
+        filename: "main.min.js",
         path: path.resolve('./build')
     },
     devServer: {},    //服务器配置

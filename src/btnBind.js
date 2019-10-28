@@ -4,13 +4,14 @@ document.getElementById('addPoint').addEventListener('click', ()=>{
     simpleC.removeAllEntities();
     simpleC.viewer.cesiumWidget.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_CLICK);
     simpleC.viewer.cesiumWidget.screenSpaceEventHandler.setInputAction((e)=>{
-       simpleC.addPoint(e.position)
+        let position = simpleC.viewer.scene.pickPosition(e.position);
+        console.log(position)
+        simpleC.addPoint(position)
     }, Cesium.ScreenSpaceEventType.LEFT_CLICK)
 });
 
 // 添加线
 document.getElementById('addLine').addEventListener('click', ()=>{
-    pointArr = [];
     simpleC.removeAllEntities();
     simpleC.viewer.cesiumWidget.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_CLICK);
     simpleC.viewer.cesiumWidget.screenSpaceEventHandler.setInputAction((e)=>{
@@ -21,7 +22,6 @@ document.getElementById('addLine').addEventListener('click', ()=>{
 
 // 添加面
 document.getElementById('addArea').addEventListener('click', ()=>{
-    pointArr = [];
     simpleC.removeAllEntities();
     simpleC.viewer.cesiumWidget.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_CLICK);
     simpleC.viewer.cesiumWidget.screenSpaceEventHandler.setInputAction((e)=>{
